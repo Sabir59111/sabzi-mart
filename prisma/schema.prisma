@@ -37,3 +37,18 @@ model Offers{
   isSoldOut   Boolean @default(false)
 
 }
+
+
+model Order{
+  id          String  @id @default(uuid())
+  userId      String 
+  email       String
+  name        String
+  image       String
+  price       Float
+  regularQty  Float?
+  customQty   Float?
+  InRupess    Float?
+  createdAt   DateTime @default(now())
+  category    String
+}

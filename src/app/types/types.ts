@@ -1,5 +1,4 @@
 export interface ProductProps {
-
       id: string;
       name: string;
       image: string;
@@ -7,23 +6,10 @@ export interface ProductProps {
       category?: string;
       oldPrice?: number;
       isSoldOut: boolean;
-          
+      discription?: string;
   }
 
 
-
-
-  export interface DealProps {
-
-    id: string;
-    name: string;
-    image: string;
-    price: number;
-    oldPrice?: number;
-    isSoldOut: boolean;
-    discription:string;
-        
-}
 
 
 

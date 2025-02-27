@@ -1,32 +1,32 @@
 "use client"
 import { useEffect, useState } from "react";
-import { DealProps, ProductProps } from "../types/types";
+import {ProductProps } from "../types/types";
 import ProductCard from "./ProductCard";
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
     const [products, setProducts] = useState<ProductProps[]>([]);
-    const [deals, setdeals] = useState<DealProps[]>([]);
+    const [deals, setdeals] = useState<ProductProps[]>([]);
 
-    let Vegetables = products.filter((product) => product.category === "vegetables");
+    const Vegetables = products.filter((product) => product.category === "vegetables");
 
-    let fruits = products.filter((product) => product.category === "fruits");
+    const fruits = products.filter((product) => product.category === "fruits");
 
-    let chicken = products.filter((product) => product.category === "chicken");
-
+    const chicken = products.filter((product) => product.category === "chicken");
 
     useEffect(() => {
-        let res = fetch("/api/products")
+        fetch("/api/products")
             .then((res) => res.json())
             .then((data) => setProducts(data));
 
-        let deals = fetch("/api/deals").then((res) => res.json())
+        fetch("/api/deals").then((res) => res.json())
             .then(data => setdeals(data))
 
     }, []);
 
     return (
 
-        <div className="">
+        <div className="px-12">
 
             {
                 Vegetables && (
@@ -34,7 +34,10 @@ export default function Home() {
                         <h1 className="text-3xl font-bold mt-6">Vegetables</h1>
                         <div className="hero-card-style">
                             {Vegetables.map((product, i) => (
+                             
                                 <ProductCard key={i} {...product} />
+
+                               
                             ))}
                         </div>
                     </div>
@@ -49,7 +52,9 @@ export default function Home() {
                     <h1 className="text-3xl font-bold mt-6">Vegetables Deals</h1>
                     <div className="hero-card-style">
                         {deals.map((product, i) => (
-                            <ProductCard key={i} {...product} />
+                        <ProductCard key={i} {...product} />
+                       
+
                         ))}
                     </div>
 

@@ -1,16 +1,10 @@
 
-
-import React from 'react'
-import Header from './components/Header'
-import Hero from './components/Hero'
-import Footer from './components/Footer'
+import WhatsAppLogin from './applogin/page'
 
 export default function page() {
   return (
     <div>
-      <Header />
-      <Hero />
-      <Footer />
+      <WhatsAppLogin />
     </div>
   )
 }

@@ -1,8 +1,10 @@
 import { Button } from '@/components/ui/button'
 import React from 'react'
+import Cartbutton from './Cartbutton'
+import Link from 'next/link'
 
 export default function Header() {
-    let array = [
+    const array = [
         "Vegetables",
         "Deals",
         "Fruits",
@@ -10,13 +12,13 @@ export default function Header() {
     ]
 
     return (
-        <header className="relative w-full">
-
-            <div className="w-full bg-[#FEEEE0] text-center ">
+        <header className="relative w-full  ">
+                <div className="w-full bg-[#FEEEE0] text-center px-0">
                 <p className="text-black font-normal">Minimum order price is 330</p>
             </div>
+            <div className='flex justify-between items-center px-12'>
 
-            <div className="flex justify-start space-x-2 mt-12">
+            <div className="flex justify-start space-x-2 mt-12 px-4 ">
                 {array.map((item, i) => (
                     <Button 
                         key={i} 
@@ -28,6 +30,17 @@ export default function Header() {
                     </Button>
                 ))}
             </div>
+            <div className=' mt-12'>
+            <Link href="/cart">
+
+            <Cartbutton />
+            </Link>
+            </div>
+
+            </div>
+
+           
+
 
         </header>
     )
