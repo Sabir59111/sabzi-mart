@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from '@/components/ui/button'
+<<<<<<< HEAD
 import React, { useState } from 'react'
 import Cartbutton from './Cartbutton'
 import Link from 'next/link'
@@ -9,6 +10,13 @@ import { Menu } from 'lucide-react'
 export default function Header() {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
+=======
+import React from 'react'
+import Cartbutton from './Cartbutton'
+import Link from 'next/link'
+
+export default function Header() {
+>>>>>>> fdf555a414746fe48ccc40dfa7577469fc387477
     const array = [
         "Vegetables",
         "Deals",
@@ -17,6 +25,7 @@ export default function Header() {
     ];
 
     return (
+<<<<<<< HEAD
         <header className="relative w-full">
             <div className="w-full bg-[#FEEEE0] text-center px-0">
                 <p className="text-black font-normal">Minimum order price is 330</p>
@@ -26,6 +35,13 @@ export default function Header() {
                 <button className='block md:hidden' onClick={() => setIsDrawerOpen(true)}>
                     <Menu size={28} />
                 </button>
+=======
+        <header className="relative w-full  ">
+                <div className="w-full bg-[#FEEEE0] text-center ">
+                <p className="text-black font-normal">Minimum order price is 330</p>
+            </div>
+            <div className='flex justify-between items-center'>
+>>>>>>> fdf555a414746fe48ccc40dfa7577469fc387477
 
                 {/* Desktop Navigation */}
                 <div className="hidden md:flex justify-start space-x-2 mt-4 md:mt-12 px-4">
@@ -48,6 +64,17 @@ export default function Header() {
                     </Link>
                 </div>
             </div>
+            <div className=' mt-12'>
+
+            <Link href="/cart">
+            <Cartbutton />
+            </Link>
+            </div>
+
+            </div>
+
+           
+
 
             {/* Mobile Drawer */}
             {isDrawerOpen && (
