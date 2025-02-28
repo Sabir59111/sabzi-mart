@@ -23,9 +23,9 @@ export default function ProductCard({id,image,isSoldOut,name,price,oldPrice }: P
 
 
   return (
-    <div className="bg-white shadow-md w-[300px] rounded-md h-[360px] mt-5 " key={id}>
+    <div className="bg-white shadow-md w-[300px] rounded-md h-[360px] mt-5 mx-2" key={id}>
 {isSoldOut && (
-        <span className="  bg-gray-400 text-white px-2 py-1 text-center ">Sold Out</span>
+        <span className="  bg-gray-500 text-white px-2 py-1 text-center ">Sold Out</span>
         
       )}
       <Image src={image} alt={name} width={150} height={150} className={`rounded-lg w-[300px]  object-cover ${isSoldOut ? "grayscale" : ""}`} />
