@@ -40,15 +40,15 @@ model Offers{
 
 
 model Order{
+ status    String  @default("pending") 
   id          String  @id @default(uuid())
   userId      String 
   email       String
   name        String
   image       String
   price       Float
-  regularQty  Float?
-  customQty   Float?
-  InRupess    Float?
-  createdAt   DateTime @default(now())
+  Qty        Float?
   category    String
+  total     Float?
+  createdAt   DateTime @default(now())
 }

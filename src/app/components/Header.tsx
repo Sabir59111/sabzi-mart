@@ -30,11 +30,23 @@ export default function Header() {
                     </Button>
                 ))}
             </div>
-            <div className=' mt-12'>
-            <Link href="/cart">
 
+            <div>
+                
+            </div>
+            <div className=' mt-12  items-center flex gap-10'>
+                <div>
+                <Link href="/cart">
             <Cartbutton />
             </Link>
+
+                </div>
+         
+
+                <Link href="/user_order">
+            order
+            </Link>
+      
             </div>
 
             </div>

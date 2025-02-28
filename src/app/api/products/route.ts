@@ -17,7 +17,7 @@ export async function GET() {
 }
 
 
-export async function POST(req) {
+export async function POST(req:NextRequest) {
   try {
     const body = await req.json();
 
@@ -39,6 +39,6 @@ export async function POST(req) {
     return NextResponse.json(res, { status: 201 });
   } catch (e) {
     console.error("Error in API route:", e);
-    return NextResponse.json({ error: "Failed to Create Product", details: e.message }, { status: 500 });
+    return NextResponse.json({ error: "Failed to Create Product", details:"Some Thing went wrong" }, { status: 500 });
   }
 }

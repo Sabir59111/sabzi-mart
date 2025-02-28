@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { FaWhatsapp,FaPhone } from "react-icons/fa";
 import { FaSquarePhone } from "react-icons/fa6";
+import { nanoid } from "@reduxjs/toolkit";
 
 const WhatsAppLogin = () => {
     const [phone, setPhone] = useState("");
@@ -16,8 +17,14 @@ const WhatsAppLogin = () => {
             return;
         }
 
-        localStorage.setItem("phone", phone);
+        let user_id=localStorage.getItem("userid");
+        if(!user_id){
+         localStorage.setItem("userid", nanoid());
+        
+        }
+
         router.push("/Home");
+
     };
 
     return (
