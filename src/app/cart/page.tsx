@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {  clearCart, ProductProps, removeProduct, updateQuantity } from "../feature/cartSlice";
 import { Button } from "@/components/ui/button";
-import { ToastContainer } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import { useRouter } from "next/dist/client/components/navigation";
 export default function CartPage() {
 
@@ -45,25 +45,28 @@ const router = useRouter();
     }));
   
     try {
-      let res = await fetch("/api/order", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ orders }), // Ensure correct object structure
-      });
-  
-      let data = await res.json();
-  
-      if (!res.ok) {
-        throw new Error(data.message || "Failed to place order");
-      }
 
-  
-      console.log("Order placed successfully", data);
+      toast.promise(
+        fetch("/api/order", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ orders }),
+        }).then((res) => res.json()).finally(()=>{
 
-      dispatch(clearCart());
-      router.push("/thanks");
+          dispatch(clearCart());
+          router.push("/thanks");
+        }),
+        {
+          pending: "Placing order...",
+          success: "Order placed successfully!",
+          error: "Failed to place order",
+        }
+      )
+    
+
+
     } catch (error) {
       console.error("Error submitting order:", error);
     }

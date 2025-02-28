@@ -34,7 +34,7 @@ export default function Header() {
             <div>
                 
             </div>
-            <div className=' mt-12  items-center flex gap-10'>
+            <div className=' mt-12  items-center flex gap-10 flex-row-reverse'>
                 <div>
                 <Link href="/cart">
             <Cartbutton />
@@ -44,7 +44,14 @@ export default function Header() {
          
 
                 <Link href="/user_order">
-            order
+                <Button 
+                       
+                        variant="secondary" 
+                        size="lg" 
+                        className="bg-[#5DC001] text-white font-semibold hover:bg-[#4A9A00]"
+                    >
+                     order history
+                    </Button>
             </Link>
       
             </div>
