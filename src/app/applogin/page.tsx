@@ -2,8 +2,14 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+<<<<<<< HEAD
 import { FaWhatsapp,FaPhone } from "react-icons/fa";
 import { FaSquarePhone } from "react-icons/fa6";
+=======
+import Header from "../components/Header";
+import Hero from "../components/Hero";
+import Footer from "../components/Footer";
+>>>>>>> fdf555a414746fe48ccc40dfa7577469fc387477
 
 const WhatsAppLogin = () => {
     const [phone, setPhone] = useState("");
@@ -21,17 +27,28 @@ const WhatsAppLogin = () => {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 px-4 w-full ">
+<<<<<<< HEAD
+        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 px-4 w-full  ">
+=======
+        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 px-4 relative">
+>>>>>>> fdf555a414746fe48ccc40dfa7577469fc387477
             {/* Top Left Fruit Image */}
             <div className="absolute top-0 left-0 w-[250px] h-[180px] md:w-[320px] md:h-[270px] bg-no-repeat bg-contain z-9"
                 style={{ backgroundImage: "url('https://sabzifruit.pk/images/fruit.png')" }}>
             </div>
 
             {/* Main Form Card */}
-            <div className="bg-white p-6 md:p-8 rounded-lg shadow-xl w-full max-w-md md:max-w-3xl z-10 opacity-95">
+<<<<<<< HEAD
+            <div className="bg-white p-6 md:p-8 rounded-lg shadow-xl w-full  max-w-60%] md:max-w-[60%] z-10 opacity-95">
                 {/* Logo Centered */}
                 <div className="flex justify-center bg-white">
                     <img src="https://sabzifruit.pk/images/logo.png" alt="Sabzi Fruit Logo" className="w-24 h-24 md:w-36 md:h-36 -mt-28" />
+=======
+            <div className="bg-white p-6 md:p-8 rounded-lg shadow-xl w-full max-w-md md:max-w-3xl z-10 opacity-95">
+                {/* Logo Centered */}
+                <div className="flex justify-center">
+                    <img src="/logo.png" alt="Sabzi Fruit Logo" className="w-24 h-24 md:w-36 md:h-36" />
+>>>>>>> fdf555a414746fe48ccc40dfa7577469fc387477
                 </div>
 
                 {/* Heading */}
@@ -72,14 +89,32 @@ const WhatsAppLogin = () => {
 
             {/* Bottom Left Icons */}
             <div className="fixed bottom-6 left-6 flex space-x-4">
+<<<<<<< HEAD
                 <FaWhatsapp size={50} color="green" />
                 <FaSquarePhone size={50} color="green" />
             </div>
 
             {/* Bottom Right Vegetable Image */}
-            <div className="fixed bottom-0 right-0 w-[250px] md:w-[500px] h-[180px] md:h-[300px]  bg-no-repeat bg-contain "
+            <div
+  className="fixed bottom-0 right-0 w-[250px] md:w-[500px] h-[180px] md:h-[300px] bg-no-repeat bg-cover"
+  style={{
+    backgroundImage: "url('https://sabzifruit.pk/images/vegitable.png')",
+    backgroundPosition: "left top", 
+    backgroundSize: "110% auto", 
+  }}
+>
+</div>
+
+=======
+                <img src="/image.png" alt="WhatsApp Icon" className="h-12 md:h-16" />
+                <img src="/phone.png" alt="Phone Icon" className="h-12 md:h-16" />
+            </div>
+
+            {/* Bottom Right Vegetable Image */}
+            <div className="fixed bottom-0 right-0 w-[250px] md:w-[500px] h-[180px] md:h-[320px] bg-no-repeat bg-contain"
                 style={{ backgroundImage: "url('https://sabzifruit.pk/images/vegitable.png')" }}>
             </div>
+>>>>>>> fdf555a414746fe48ccc40dfa7577469fc387477
         </div>
     );
 };

@@ -6,7 +6,10 @@ export interface ProductProps {
       category?: string;
       oldPrice?: number;
       isSoldOut: boolean;
+<<<<<<< HEAD
       discription?: string;
+=======
+>>>>>>> fdf555a414746fe48ccc40dfa7577469fc387477
   }
 
 
