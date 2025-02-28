@@ -14,7 +14,10 @@ export default function CartPage() {
 
   const router=useRouter();
   const [productQuantities, setProductQuantities] = useState<{ [key: string]: { quantityOption: string, customQuantity: number } }>(
+  
+  
     cartItems.reduce((acc: any, item: ProductProps) => {
+  
       acc[item.id] = { quantityOption: "regular", customQuantity: 1 };
       return acc;
     }, {})
@@ -49,54 +52,49 @@ export default function CartPage() {
     return acc + getProductPrice(item, quantityOption, customQuantity);
   }, 0);
 
-
-  const onSubmit = () => {
-    
-    try{
-      toast.promise(
-        new Promise((resolve, reject) => {
-          setTimeout(() => {
-            resolve("Message sent successfully!"); // Ensure success
-          }, 2000);
-        }).then(() => {
-
-          new Promise((resolve, reject) => {
-            setTimeout(() => {
-              resolve("Message sent successfully!"); // Ensure success
-            }, 2000);
-          }
-          ).then(()=>{
-            dispatch(clearCart());
-            router.push('/thanks');
-          })
-            
-        
-        }),
-        {
-          pending: "Sending orders...",
-          success: "orders sent successfully!",
-          error: "Error sending orders",
-        },
-        {
-          position: "top-center",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-       
-        }
-      );
-    }catch(e){
-      console.log(e);
-    }
-    }
-   
-
+  const handleOrder = async () => {
+    const orderData = {
+      orders: cartItems.map((item: ProductProps) => ({
+        name: item.name,
+        image: item.image,
+        price: item.price,
+        customQty: productQuantities[item.id].customQuantity,
+        regularQty: productQuantities[item.id].quantityOption === "regular" ? 1 : 0,
+        InRupess: productQuantities[item.id].quantityOption === "rupee" ? productQuantities[item.id].customQuantity : 0,
+        category: item.category,
+        userId: "userId",
+        email: "email",
+      })),
+    };
   
-
-
-
+    try {
+      const response = await fetch("/api/order", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          orders: orderData.orders.map((order: any) => ({
+            name: order.name,
+            image: order.image || "",
+            price: order.price || 0,
+            customQty: order.customQty || 0,
+            regularQty: order.regularQty || 0,
+            InRupess: order.InRupess|| 0,
+            category: order.category || "",
+            userId: order.userId|| "",
+            email: order.email || "",
+          })),
+        }),
+      });
+  
+      if (!response.ok) throw new Error("Failed to place order.");
+  
+      toast.success("Order placed successfully!");
+      dispatch(clearCart());
+      router.push("/thanks");
+    } catch (error) {
+      toast.error("Error placing order.");
+    }
+  };
 
 
 
@@ -168,21 +166,22 @@ export default function CartPage() {
               );
             })}
 
+          
+          </div>
+
+          <div className="bg-[#F8D7B9] p-4 w-full rounded-lg shadow-md max-w-md">
+            <input type="text" placeholder="Enter Name" className="px-4 py-2 border rounded-lg w-full" />
+            <input type="text" placeholder="Enter Address" className="px-4 mt-4 py-2 border rounded-lg w-full" />
+            <Button className="mt-4 bg-blue-500 text-white hover:bg-blue-600 rounded-lg py-2 px-4 w-full"  onClick={handleOrder}>  
+              Submit Order
+            </Button>
+            <div>
             <div className="bg-[#F8D7B9] p-4 w-full rounded-lg shadow-md">
               <div className="flex justify-between items-center border-b py-4">
                 <span className="text-lg font-semibold">Total</span>
                 <span className="text-lg font-semibold">{totalPrice.toFixed(2)}</span>
               </div>
             </div>
-          </div>
-
-          <div className="bg-[#F8D7B9] p-4 w-full rounded-lg shadow-md max-w-md">
-            <input type="text" placeholder="Enter Name" className="px-4 py-2 border rounded-lg w-full" />
-            <input type="text" placeholder="Enter Address" className="px-4 mt-4 py-2 border rounded-lg w-full" />
-            <Button className="mt-4 bg-blue-500 text-white hover:bg-blue-600 rounded-lg py-2 px-4 w-full"  onClick={onSubmit}>  
-              Submit Order
-            </Button>
-            <div>
             <ToastContainer />
 
               </div>

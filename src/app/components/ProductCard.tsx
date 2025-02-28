@@ -6,7 +6,7 @@ import { addProduct,removeProduct } from "../feature/cartSlice";
 import Button from "./Button";
 import Circle from "./Circle";
 
-export default function ProductCard({id,image,isSoldOut,name,price,oldPrice }: ProductProps) {
+export default function ProductCard({id,image,isSoldOut,name,price,oldPrice ,category,discription}: ProductProps) {
 
   let inCart=useSelector((state:any)=>state.cart.items)
 
@@ -16,7 +16,7 @@ export default function ProductCard({id,image,isSoldOut,name,price,oldPrice }: P
     const dispatch = useDispatch()
 
     const addToCart = () => {
-        dispatch(addProduct({id,image,isSoldOut,name,price,oldPrice}))
+        dispatch(addProduct({id,image,isSoldOut,name,price,oldPrice,category,discription}))
 
     }
 
