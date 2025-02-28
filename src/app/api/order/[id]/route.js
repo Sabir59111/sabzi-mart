@@ -4,9 +4,9 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-export async function PATCH(req: NextRequest, { params }: { params: { id: string } }) {
+export async function PATCH(req, { params }) {
     try {
-      const { id } =await  params;
+      const { id } =  params;
       const { status } = await req.json();
   
       const updatedOrder = await prisma.order.update({

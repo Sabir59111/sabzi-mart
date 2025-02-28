@@ -41,7 +41,15 @@ export default function ProductAdminPage() {
       await fetch(`/api/products/${editingProduct.id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(editingProduct),
+        body: JSON.stringify({
+          name: editingProduct.name || "",
+          image: editingProduct.image || "",
+          price: parseFloat(editingProduct.price) || 0,
+          category: editingProduct.category || "",
+          oldPrice: editingProduct.oldPrice || 0,
+          isSoldOut: editingProduct.isSoldOut|| false,
+          
+        }),
       });
       setProducts(products.map(p => p.id === editingProduct.id ? editingProduct : p));
       setEditingProduct(null);

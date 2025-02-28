@@ -9,6 +9,7 @@ export async function PUT(req, { params }) {
       const body = await req.json();
       const {id} =await  params; 
   
+      console.log("body", body);
       if (!id) {
         return NextResponse.json({ error: "Product ID is required" }, { status: 400 });
       }
