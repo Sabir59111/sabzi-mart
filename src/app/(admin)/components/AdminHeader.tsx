@@ -9,8 +9,7 @@ export default function AdminHeader() {
               <li><a href="/addProduct" className="hover:underline">Add Product</a></li>
               <li><a href="/allProducts" className="hover:underline">Products</a></li>
               <li><a href="/orders" className="hover:underline">Orders</a></li>
-              <li><a href="/deals" className="hover:underline">Deals</a></li>
-              <li><a href="/addDeals" className="hover:underline">Add Deals</a></li>
+            
             </ul>
           </nav>
         </header>

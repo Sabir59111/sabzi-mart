@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button'
 import React from 'react'
 import Cartbutton from './Cartbutton'
 import Link from 'next/link'
+import Burger from './Burger'
 
 export default function Header() {
     const array = [
@@ -12,55 +13,43 @@ export default function Header() {
     ]
 
     return (
-        <header className="relative w-full  ">
-                <div className="w-full bg-[#FEEEE0] text-center px-0">
-                <p className="text-black font-normal">Minimum order price is 330</p>
-            </div>
-            <div className='flex justify-between items-center px-12'>
+        <header>
+             <div className="w-full bg-[#FEEEE0] text-center ">
+        <p className="text-black font-normal">Minimum order price is 330</p>
+      </div>
+            <div className='flex justify-between px-2'>
 
-            <div className="flex justify-start space-x-2 mt-12 px-4 ">
-                {array.map((item, i) => (
-                    <Button 
-                        key={i} 
-                        variant="secondary" 
-                        size="lg" 
-                        className="bg-[#5DC001] text-white font-semibold hover:bg-[#4A9A00]"
-                    >
-                        {item.charAt(0).toUpperCase() + item.slice(1).toLowerCase()}
-                    </Button>
-                ))}
+            <div className='mt-12'>
+                <Burger />
             </div>
+            <div className='  mt-12  items-center flex gap-10 flex-row-reverse'>
 
-            <div>
-                
-            </div>
-            <div className=' mt-12  items-center flex gap-10 flex-row-reverse'>
                 <div>
-                <Link href="/cart">
-            <Cartbutton />
-            </Link>
+                    <Link href="/cart">
+                        <Cartbutton />
+                    </Link>
 
                 </div>
-         
+
 
                 <Link href="/user_order">
-                <Button 
-                       
-                        variant="secondary" 
-                        size="lg" 
+                    <Button
+
+                        variant="secondary"
+                        size="lg"
                         className="bg-[#5DC001] text-white font-semibold hover:bg-[#4A9A00]"
                     >
-                     order history
+                        
+                        order history
                     </Button>
-            </Link>
-      
-            </div>
+                </Link>
 
             </div>
-
-           
+            </div>
 
 
         </header>
+
+
     )
 }

@@ -14,36 +14,35 @@ datasource db {
 }
 
 model Product {
-  id          String  @id @default(uuid())
-  name        String
-  image       String
-  price       Float
-  oldPrice    Float?
-  category    String
-  isSoldOut   Boolean @default(false)
-  createdAt   DateTime @default(now())
+  id        String   @id @default(uuid())
+  name      String
+  image     String
+  price     Float
+  discription String?
+  oldPrice  Float?
+  category  String
+  isSoldOut Boolean  @default(false)
+  createdAt DateTime @default(now())
 }
 
-
 model Order {
-  id        String    @id @default(uuid())
+  id        String      @id @default(uuid())
   userId    String
   email     String
-  status    String    @default("pending") 
-  createdAt DateTime  @default(now())
+  status    String      @default("pending")
+  createdAt DateTime    @default(now())
   total     Float?
   items     OrderItem[]
 }
 
 model OrderItem {
-  id        String   @id @default(uuid())
-  orderId   String   
-  offerId   String?  
-  name      String
-  image     String
-  price     Float
-  Qty       Float?
-  category  String
-  order     Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)  
-  offer     Offers?  @relation(fields: [offerId], references: [id], onDelete: Cascade)  
+  id       String  @id @default(uuid())
+  orderId  String
+  offerId  String?
+  name     String
+  image    String
+  price    Float
+  Qty      Float?
+  category String
+  order    Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
 }

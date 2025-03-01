@@ -6,7 +6,7 @@ import { FaPlus } from "react-icons/fa6";
 interface ButtonProps {
     onClick?: () => void;
   }
-export default function Button({onClick}: ButtonProps){
+export default function CustomButton({onClick}: ButtonProps){
   const [isHovered, setIsHovered] = useState(false);
 
   return (
