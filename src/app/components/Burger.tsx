@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react"; // Icons for burger menu
+import { Menu, X } from "lucide-react";
 
 export default function Burger() {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,7 +16,7 @@ export default function Burger() {
   return (
     <header className="relative w-full">
       {/* Navbar */}
-      <div className="flex justify-between items-center px-6 md:px-12 py-4 bg-white shadow-md">
+      <div className="flex justify-between items-center px-6 md:px-12 py-4  md:shadow-none">
         {/* Burger Menu for Mobile */}
         <button
           onClick={() => setIsOpen(!isOpen)}
@@ -27,22 +27,23 @@ export default function Burger() {
 
         {/* Navigation Menu */}
         <nav
-          className={`absolute top-14 left-0 right-0 w-full bg-white shadow-md transition-all duration-300 ${
-            isOpen ? "opacity-100 h-[250px] w-[400px] z-10 p-4" : "opacity-0 h-0 overflow-hidden"
-          } md:static md:opacity-100 md:h-auto md:p-0 md:bg-transparent md:shadow-none`}
+          className={`absolute left-0 right-0 top-14 md:top-0 w-full bg-white shadow-md transform transition-transform duration-300 ease-in-out 
+            z-10 
+            ${isOpen ? "translate-y-0 opacity-100 visible w-max" : "-translate-y-full opacity-0 invisible"} 
+            md:relative md:translate-y-0 md:opacity-100 md:visible md:shadow-none md:bg-transparent`}
         >
-          <div className="flex flex-col md:flex-row items-center space-y-3 md:space-y-0 md:space-x-4">
+          <div className="flex flex-col md:flex-row items-center space-y-3 md:space-y-0 md:space-x-4 p-4 md:p-0">
             {menuItems.map((item, i) => (
-                 <Button
-                 variant="secondary"
-                 size="lg"
-                 className="w-full md:w-auto bg-[#5DC001] text-white font-semibold hover:bg-[#4A9A00]"
-               >
-              <a key={i} href={`#${item.id}`} onClick={() => setIsOpen(false)}>
-               
+              <Button
+                key={i}
+                variant="secondary"
+                size="lg"
+                className="w-full md:w-auto bg-[#5DC001] text-white font-semibold hover:bg-[#4A9A00]"
+                onClick={() => setIsOpen(false)}
+              >
+                <a href={`#${item.id}`} className="w-full text-center">
                   {item.name}
-                
-              </a>
+                </a>
               </Button>
             ))}
           </div>

@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { useEffect } from "react";
 import { OrderProps } from "./page";
 
 interface OrderProp {
@@ -9,11 +9,21 @@ interface OrderProp {
 }
 
 export default function OrderComponent({ order, updateOrderStatus }: OrderProp) {
-  const router = useRouter();
+ 
+  const [loading, setLoading] = React.useState(false);
+
+  useEffect(() => {
+
+    if (loading) {
+      setTimeout(() => {
+        setLoading(false);
+      }, 3000);
+    }
+  }, [loading]);
 
   return (
     <>
-      <tr className="hidden md:table-row text-center">
+      <tr className={`border-b ${loading ? "animate-pulse " : "hidden md:table-row text-center"}`}>
         <td className="border p-2">{order.userId}</td>
         <td className="border p-2">{order.email}</td>
         <td className="border p-2">{order.items.length}</td>
@@ -79,14 +89,17 @@ export default function OrderComponent({ order, updateOrderStatus }: OrderProp) 
         <div className="mt-4 space-x-2 flex">
           <Button
             disabled={order.status !== "pending"}
-            onClick={() => updateOrderStatus(order.id, "accepted", order.userId)}
+            onClick={() =>{ updateOrderStatus(order.id, "accepted", order.userId); setLoading(true);}}
             className="bg-green-500 text-white px-3 py-1 rounded-md hover:bg-green-700 disabled:opacity-50 flex-1"
           >
             Accept
           </Button>
           <Button
             disabled={order.status !== "pending"}
-            onClick={() => updateOrderStatus(order.id, "rejected", order.userId)}
+            onClick={() => {updateOrderStatus(order.id, "rejected", order.userId); setLoading(true);
+
+
+            }}
             className="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-700 disabled:opacity-50 flex-1"
           >
             Reject

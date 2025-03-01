@@ -69,7 +69,7 @@ const OrdersPage = () => {
                   <div>
                     <p className="font-medium text-gray-800">{item.name}</p>
                     <p className="text-gray-700">Category: {item.category}</p>
-                    <p className="text-gray-700">Price: Rs {item.price.toFixed(2)} x {item.Qty}</p>
+                    <p className="text-gray-700">Price: Rs {item.price.toFixed(2)} x {item.Qty.toFixed(2)} = Rs {(item.price * item.Qty).toFixed(2)}</p>
                   </div>
                 </div>
               ))}
