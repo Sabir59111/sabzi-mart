@@ -19,6 +19,9 @@ export default function UserOrders() {
   const [orders, setOrders] = useState<Order[]>([]);
   const [userId, setUserId] = useState<string | null>(null);
 
+
+
+  console.log(orders," orders");
   useEffect(() => {
     const storedUserId = localStorage.getItem("userid");
 

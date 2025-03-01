@@ -41,3 +41,20 @@ export async function POST(req: NextRequest) {
 }
 
 
+
+
+export async function PATCH(req: NextRequest) {
+  try {
+    const body = await req.json();
+
+    const res = await prisma.order.update({
+      where: { id: body.id as string },
+      data: { total: body.total },
+    });
+
+    return NextResponse.json({ message: "Order updated successfully", order: res }, { status: 200 });
+  } catch (e: any) {
+    console.error("Error in API route:", e.message);
+    return NextResponse.json({ error: "Failed to update order", details: e.message }, { status: 500 });
+  }
+}
